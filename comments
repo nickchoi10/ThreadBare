@@ -1,0 +1,46 @@
+Comments on what I learned..
+I ran the broken ThreadTwoHashMap couple times... and there sometimes comes out with an exception..
+Based on the example below this occurs when exception happens.
+I believe this is due to multiple threads running through the threadMap hashmap and one of the threads is trying to
+start a thread that already started..
+2 new threads (map size of 6 and map size of 8) are being introduced to run T0-7 when it is already being ran
+The same single thread cannot be ran twice simultaneously.
+
+
+multiple threads can run concurrently on multiple core system
+with one core processor, only one thread may be ran at at time.
+
+
+
+Constructing HashMap of Size 6
+Starting Threads in HashMap
+Constructing HashMap of Size 8
+ThreadTwoHashMapB - START T4
+ThreadTwoHashMapB - START T5
+ThreadTwoHashMapB - START T0
+ThreadTwoHashMapB - START T1
+ThreadTwoHashMapB - START T2
+Thread HashMap, all have been started
+Starting Threads in HashMap
+ThreadTwoHashMapB - START T3
+ThreadTwoHashMapB - START T4
+ThreadTwoHashMapB - START T5
+ThreadTwoHashMapB - START T6
+ThreadTwoHashMapB - START T7
+Exception in thread "Run of 8" java.lang.IllegalThreadStateException
+	at java.lang.Thread.start(Thread.java:710)
+	at ThreadTwoHashMapBroken.runMapOfSize(ThreadTwoHashMapBroken.java:58)
+	at ThreadTwoHashMapBroken.access$000(ThreadTwoHashMapBroken.java:4)
+	at ThreadTwoHashMapBroken$2.run(ThreadTwoHashMapBroken.java:42)
+ThreadTwoHashMapB - END T4
+ThreadTwoHashMapB - END T2
+ThreadTwoHashMapB - END T6
+ThreadTwoHashMapB - END T3
+ThreadTwoHashMapB - END T5
+ThreadTwoHashMapB - END T7
+ThreadTwoHashMapB - END T0
+ThreadTwoHashMapB - END T5
+ThreadTwoHashMapB - END T1
+ThreadTwoHashMapB - END T4
+
+Process finished with exit code 0
